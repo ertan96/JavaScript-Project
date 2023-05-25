@@ -13,10 +13,10 @@ If time persist, there will be several levels of difficulty a player can select 
 # Functionality & MVPs
 In Silhouette, users will be able to:
 
-- Start the game on the game board
-- Select from a limited amount of options to select the correct silhouette
+- Start the game on to have silhoettes floating on the canvas
+- Select from a limited amount of options/buttons to select the correct silhouette
 - Pause button to pause/unpause the background music at anytime
-- Be able to select different level difficulties
+- Overlapping silhouettes of objects floating around the canvas
 
 In addition, this project will include:
 
@@ -57,6 +57,5 @@ NB:
 # Bonus features
 There are many add-ons to make this game more advanced:
 
-- Add levels to select from
-- Add multiple choices for starting states that are interesting
+- Add difficulty levels to select from
 - Different sound effects for button clicks while an existing background music is playing
