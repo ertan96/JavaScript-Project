@@ -1,1 +1,41 @@
 @import 'reset.css';
+
+* {
+    box-sizing: border-box;
+}
+
+/* set default html and body to the top */
+body {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#view-canvas {
+    background: white;
+    border-radius: 5px;
+}
+
+
+/* align container class to the middle */
+.container {   
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: Cascadia Code, sans-serif;
+}
+
+.pokemon {
+    display: none;
+}

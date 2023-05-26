@@ -1,10 +1,10 @@
 class Game {
-    constructor(ctx) {
-        this.ctx = ctx
-        this.pokemon = [];
-        this.silhouette = [];
-        this.setcanvas(ctx);
-    }
+    static DIM_X = 600;
+    static DIM_Y = 600;
+
+    // constructor() {
+    //     this.
+    // }
 
 }
 
