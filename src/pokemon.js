@@ -6,7 +6,7 @@ class Pokemon extends MovingObject {
         super(imagePath, canvas, ctx, scale);
     }
 
-    applySilhouette() {
+    applySilhouette() { //function was pulled from a script online
 
         const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         const data = imageData.data;
