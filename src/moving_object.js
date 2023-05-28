@@ -11,7 +11,7 @@ class MovingObject {
         this.y = 0;
         this.dx = 1; // Speed in the x-axis
         this.dy = 1; // Speed in the y-axis
-        this.angle = 0; // To allow for spinning of the image
+        this.angle = 0; // Allowing spinning of my pokemon image/silhouette
 
         this.image.onload = () => {
             this.width = this.image.width * this.scale;

@@ -2,11 +2,13 @@ import MovingObject from "./moving_object";
 
 class Pokemon extends MovingObject {
 
-    constructor(imagePath, canvas, ctx, scale) {
+    constructor(imagePath, canvas, ctx, scale, isSilhouette) {
         super(imagePath, canvas, ctx, scale);
+        this.isSilhouette = isSilhouette;
+        this.isRevealed = false;
     }
 
-    applySilhouette() { //function was pulled from a script online
+    applySilhouette() { //function was pulled from a script online for silhouette on canvas
 
         const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         const data = imageData.data;
@@ -24,8 +26,10 @@ class Pokemon extends MovingObject {
     }
 
     draw() {
-        super.draw();
-        this.applySilhouette();
+        if (this.isSilhouette) {
+            this.applySilhouette();
+        }
+        supe.draw();
     }
 
     startAnimation() {
