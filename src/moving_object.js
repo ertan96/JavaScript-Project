@@ -23,7 +23,7 @@ class MovingObject {
     }
 
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  // clears canvas constantly everytime drawn
+        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  // clears canvas constantly everytime drawn
         
         this.x += this.dx;
         this.y += this.dy;
@@ -43,7 +43,7 @@ class MovingObject {
         this.ctx.drawImage(this.image, -this.width / 2, -this.height / 2, this.width, this.height);
         this.ctx.restore();
     
-        requestAnimationFrame(() => this.draw());
+        // requestAnimationFrame(() => this.draw());
     }
 
     startAnimation() {

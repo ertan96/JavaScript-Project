@@ -8,9 +8,8 @@ class Pokemon extends MovingObject {
         this.isRevealed = false;
     }
 
-    applySilhouette() { //function was pulled from a script online for silhouette on canvas
-
-        const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+    applySilhouette(imageData) { //function was pulled from a script online for silhouette on canvas
+        console.log("applySilhouette is working correctly");
         const data = imageData.data;
     
         for (let i = 0; i < data.length; i += 4) {
@@ -22,18 +21,28 @@ class Pokemon extends MovingObject {
             }
         }
     
-        this.ctx.putImageData(imageData, 0, 0);
+        return imageData;
     }
 
-    draw() {
-        if (this.isSilhouette) {
-            this.applySilhouette();
+    draw() { 
+        super.draw();
+
+        if (this.isSilhouette && !this.isRevealed) { // applies silhouette if instance is a silhouette but not revealed
+            const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            const silhouetteData = this.applySilhouette(imageData);
+            this.ctx.putImageData(silhouetteData, 0, 0);
         }
-        supe.draw();
     }
+    
+    reveal() { // Reveal the actual image if this isn't a silhouette
+        if (!this.isSilhouette) {
+            this.isRevealed = true;
+        }
+    }
+
 
     startAnimation() {
-        this.applySilhouette();
+        this.draw();
         super.startAnimation();
     }
 
