@@ -14,8 +14,14 @@ class Pair {
         }
     }
 
+    stopAnimatingSilhouette() {
+        this.silhouette.isRevealed = true; // stop the silhouette from animating
+    }
+
     reveal() {
-        this.actual.isRevealed = true;
+        this.actual.reveal();
+        this.stopAnimatingSilhouette(); // stop the silhouette from animating
+        console.log('321');
     }
 }
 

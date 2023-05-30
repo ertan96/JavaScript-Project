@@ -33,6 +33,7 @@ class Pokemon extends MovingObject {
             const silhouetteData = this.applySilhouette(imageData);
             this.ctx.putImageData(silhouetteData, 0, 0);
         }
+
     }
     
     animate() {
@@ -52,17 +53,28 @@ class Pokemon extends MovingObject {
     }
 
     reveal() { // Reveal the actual image if this isn't a silhouette
-        this.isRevealed = true;
+        // this.isRevealed = true;
         
 
-        if (!this.isSilhouette) {
-            this.animate().then(() => {
-                this.startAnimation();
-            });
-        } else {
-            this.startAnimation();
-        }
+        // if (!this.isSilhouette) {
+        //     this.animate().then(() => {
+        //         this.startAnimation();
+        //     });
+        // } else {
+        //     this.startAnimation();
+        // }
+        // console.log(`Pokemon revealed: ${this.isRevealed}`);
+        this.isRevealed = true;
+
+        this.startAnimation();
         console.log(`Pokemon revealed: ${this.isRevealed}`);
+
+        // if (!this.isSilhouette) {
+        //     this.animate().then(() => {
+        //         this.startAnimation();
+        //     });
+        // }
+        // console.log(`Pokemon revealed123123: ${this.isRevealed}`);
 
     }
 
