@@ -3,7 +3,7 @@ import Pokemon from './pokemon.js';
 class Pair {
     constructor(imagePath, canvas, ctx, scale) {
         this.silhouette = new Pokemon(imagePath, canvas, ctx, scale, true);
-        this.actual = new Pokemon(imagePath, canvas, ctx, scale, false);
+        this.actual = new Pokemon(imagePath, canvas, ctx, scale, true);
     }
 
     draw() {
@@ -14,14 +14,17 @@ class Pair {
         }
     }
 
-    stopAnimatingSilhouette() {
-        this.silhouette.isRevealed = true; // stop the silhouette from animating
-    }
+    // stopAnimatingSilhouette() {
+    //     this.silhouette.isRevealed = true; // stop the silhouette from animating
+    // }
 
     reveal() {
         this.actual.reveal();
-        this.stopAnimatingSilhouette(); // stop the silhouette from animating
-        console.log('321');
+        this.silhouette.isRevealed = true;
+        this.silhouette.isSilhouette = false;
+        // this.silhouette.isRevealed = false; // make sure the silhouette is not revealed after actual is revealed
+        // this.stopAnimatingSilhouette(); // stop the silhouette from animating
+        console.log('Pair class reveal: 321');
     }
 }
 

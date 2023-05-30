@@ -2,7 +2,7 @@ import MovingObject from "./moving_object";
 
 class Pokemon extends MovingObject {
 
-    constructor(imagePath, canvas, ctx, scale, isSilhouette) {
+    constructor(imagePath, canvas, ctx, scale, isSilhouette = true) {
         super(imagePath, canvas, ctx, scale);
         this.imagePath = imagePath;
         this.isSilhouette = isSilhouette;
@@ -10,7 +10,6 @@ class Pokemon extends MovingObject {
     }
 
     applySilhouette(imageData) { //function was pulled from a script online for silhouette on canvas
-        console.log("applySilhouette is working correctly");
         const data = imageData.data;
     
         for (let i = 0; i < data.length; i += 4) {
@@ -28,12 +27,24 @@ class Pokemon extends MovingObject {
     draw() { 
         super.draw();
 
-        if (this.isSilhouette && !this.isRevealed) { // applies silhouette if instance is a silhouette but not revealed
+        // if (this.isSilhouette && !this.isRevealed) { // applies silhouette if instance is a silhouette but not revealed
+        //     const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        //     const silhouetteData = this.applySilhouette(imageData);
+        //     this.ctx.putImageData(silhouetteData, 0, 0);
+        // }
+
+        if (this.isSilhouette) {
+            debugger
             const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
             const silhouetteData = this.applySilhouette(imageData);
             this.ctx.putImageData(silhouetteData, 0, 0);
         }
 
+        // if (this.isRevealed) {
+        //     const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        //     console.log('hit');
+        //     this.ctx.putImageData(imageData, 0, 0);
+        // }
     }
     
     animate() {
@@ -53,35 +64,12 @@ class Pokemon extends MovingObject {
     }
 
     reveal() { // Reveal the actual image if this isn't a silhouette
-        // this.isRevealed = true;
-        
 
-        // if (!this.isSilhouette) {
-        //     this.animate().then(() => {
-        //         this.startAnimation();
-        //     });
-        // } else {
-        //     this.startAnimation();
-        // }
-        // console.log(`Pokemon revealed: ${this.isRevealed}`);
         this.isRevealed = true;
-
+        this.isSilhouette = false;
         this.startAnimation();
-        console.log(`Pokemon revealed: ${this.isRevealed}`);
+        console.log(`Pokemon class.reveal: Pokemon revealed: ${this.isRevealed}`);
 
-        // if (!this.isSilhouette) {
-        //     this.animate().then(() => {
-        //         this.startAnimation();
-        //     });
-        // }
-        // console.log(`Pokemon revealed123123: ${this.isRevealed}`);
-
-    }
-
-
-    startAnimation() {
-        this.draw();
-        super.startAnimation();
     }
 
 }

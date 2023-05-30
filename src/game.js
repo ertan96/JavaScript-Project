@@ -25,22 +25,30 @@ class Game {
             new Pair('./src/pokemonImages/wartortle.png', this.canvas, this.ctx, 0.3),
             new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
         ]
+
+        const pairObj = {
+            pikachu: new Pair('./src/pokemonImages/pikachu.png', this.canvas, this.ctx, 0.1),
+            emnolga: new Pair('./src/pokemonImages/emolga.png', this.canvas, this.ctx, 0.2),
+            bulbasaur: new Pair('./src/pokemonImages/bulbasaur.png', this.canvas, this.ctx, 0.3),
+            ivysaur: new Pair('./src/pokemonImages/ivysaur.png', this.canvas, this.ctx, 0.3),
+            venusaur: new Pair('./src/pokemonImages/venusaur.png', this.canvas, this.ctx, 0.3),
+            charmander: new Pair('./src/pokemonImages/charmander.png', this.canvas, this.ctx, 0.3),
+            charmeleon: new Pair('./src/pokemonImages/charmeleon.png', this.canvas, this.ctx, 0.3),
+            charizard: new Pair('./src/pokemonImages/charizard.png', this.canvas, this.ctx, 0.3),
+            squritle: new Pair('./src/pokemonImages/squirtle.png', this.canvas, this.ctx, 0.3),
+            wartortle: new Pair('./src/pokemonImages/wartortle.png', this.canvas, this.ctx, 0.3),
+            blastoise: new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
+        };
         
-        for (let i = 0; i < 3; i++) { // pushes 3 
+        for (let i = 0; i < 4; i++) { // pushes 4  
             const randomIndex = Math.floor(Math.random() * allPairs.length);
             const selectedPair = allPairs.splice(randomIndex, 1)[0]; // Removes the selected pair from allPairs array
             this.pairs.push(selectedPair);
         }
 
-        const randomIndex = Math.floor(Math.random() * allPairs.length);
-        const selectedPair = allPairs.splice(randomIndex, 1)[0];
-        this.hiddenPairIndex = this.pairs.length - 1; // the hidden pair is the one displayed on the table
-        this.pairs.push(selectedPair);
-
-        // this.pairs.push(pair1, pair2, pair3, pair4, pair5, pair6, pair7, pair8, pair9, pair10, pair11);
-
-        // this.hiddenPairIndex = Math.floor(Math.random() * this.pairs.length);
-
+        this.hiddenPairIndex = Math.floor(Math.random() * this.pairs.length); // the hidden pair is the one displayed on the table and at a random position
+        window.pairs = this.pairs;
+        
         this.animate();
     }
 
@@ -52,6 +60,7 @@ class Game {
 
         this.pairs.forEach((pair, index) => {
             if (index !== this.hiddenPairIndex) {
+                // debugger
                 pair.draw();
             }
         });
@@ -61,7 +70,8 @@ class Game {
 
     revealPair(index) { //grabs the index of the pairs array and reveals it
         console.log(`Revealing pair at index ${index}`);
-        this.pairs[index].actual.reveal();
+        // this.pairs[index].actual.reveal();
+        this.pairs[index].reveal();
         console.log(`Pair revealed: ${this.pairs[index].actual.isRevealed}`);
     }
 
