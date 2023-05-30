@@ -4,6 +4,7 @@ class Pokemon extends MovingObject {
 
     constructor(imagePath, canvas, ctx, scale, isSilhouette) {
         super(imagePath, canvas, ctx, scale);
+        this.imagePath = imagePath;
         this.isSilhouette = isSilhouette;
         this.isRevealed = false;
     }
@@ -34,9 +35,29 @@ class Pokemon extends MovingObject {
         }
     }
     
+    animate() {
+        return new Promise(resolve => {
+            const frame = () => {
+                this.move();
+                this.draw();
+
+                if (this.isRevealed) {
+                    resolve();
+                } else {
+                    requestAnimationFrame(frame);
+                }
+            }
+            requestAnimationFrame(frame);
+        });
+    }
+
     reveal() { // Reveal the actual image if this isn't a silhouette
         if (!this.isSilhouette) {
             this.isRevealed = true;
+
+            this.animate().then(() => {
+                this.startAnimation();
+            });
         }
     }
 

@@ -40,3 +40,12 @@ h1 {
     display: none;
     // filter: brightness(0) invert(0);  //did not work to make a silhouette
 }
+
+.pokemon-button {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    cursor: pointer;
+    border: 1px solid #000; /* Adjust as needed */
+    border-radius: 5px; /* Adjust as needed */
+    padding: 10px; /* Adjust as needed */
+}

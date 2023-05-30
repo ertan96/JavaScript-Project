@@ -12,6 +12,7 @@ class MovingObject {
         this.dx = 1; // Speed in the x-axis
         this.dy = 1; // Speed in the y-axis
         this.angle = 0; // Allowing spinning of my pokemon image/silhouette
+        this.move = this.move.bind(this);
 
         this.image.onload = () => {
             this.width = this.image.width * this.scale;
@@ -22,13 +23,11 @@ class MovingObject {
         };
     }
 
-    draw() {
-        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  // clears canvas constantly everytime drawn
-        
+    move () {
         this.x += this.dx;
         this.y += this.dy;
-        this.angle += 0.01; // Spinning Speed adjustments
-        
+        this.angle += 0.02; // Spinning Speed adjustments
+
         if (this.x + this.width > this.canvas.width || this.x < 0) {
             this.dx *= -1;
         }
@@ -36,7 +35,12 @@ class MovingObject {
             this.dy *= -1;
         }
         
-    
+    }
+
+    draw() {
+        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  // clears canvas constantly everytime drawn
+        this.move();
+
         this.ctx.save();
         this.ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
         this.ctx.rotate(this.angle);
