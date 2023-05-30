@@ -27,18 +27,17 @@ class Pokemon extends MovingObject {
     draw() { 
         super.draw();
 
-        // if (this.isSilhouette && !this.isRevealed) { // applies silhouette if instance is a silhouette but not revealed
-        //     const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-        //     const silhouetteData = this.applySilhouette(imageData);
-        //     this.ctx.putImageData(silhouetteData, 0, 0);
-        // }
-
-        if (this.isSilhouette) {
-            debugger
+        if (this.isSilhouette && !this.isRevealed) { // applies silhouette if instance is a silhouette but not revealed
             const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
             const silhouetteData = this.applySilhouette(imageData);
             this.ctx.putImageData(silhouetteData, 0, 0);
         }
+
+        // if (this.isSilhouette) {
+        //     const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        //     const silhouetteData = this.applySilhouette(imageData);
+        //     this.ctx.putImageData(silhouetteData, 0, 0);
+        // }
 
         // if (this.isRevealed) {
         //     const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
@@ -47,29 +46,28 @@ class Pokemon extends MovingObject {
         // }
     }
     
-    animate() {
-        return new Promise(resolve => {
-            const frame = () => {
-                this.move();
-                this.draw();
+    // animate() {
+    //     return new Promise(resolve => {
+    //         const frame = () => {
+    //             this.move();
+    //             this.draw();
 
-                if (this.isRevealed) {
-                    resolve();
-                } else {
-                    requestAnimationFrame(frame);
-                }
-            }
-            requestAnimationFrame(frame);
-        });
-    }
+    //             if (this.isRevealed) {
+    //                 resolve();
+    //             } else {
+    //                 requestAnimationFrame(frame);
+    //             }
+    //         }
+    //         requestAnimationFrame(frame);
+    //     });
+    // }
 
     reveal() { // Reveal the actual image if this isn't a silhouette
 
         this.isRevealed = true;
         this.isSilhouette = false;
         this.startAnimation();
-        console.log(`Pokemon class.reveal: Pokemon revealed: ${this.isRevealed}`);
-
+        // console.log(`Pokemon class.reveal: Pokemon revealed: ${this.isRevealed}`);
     }
 
 }

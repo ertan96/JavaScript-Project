@@ -26,19 +26,19 @@ class Game {
             new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
         ]
 
-        const pairObj = {
-            pikachu: new Pair('./src/pokemonImages/pikachu.png', this.canvas, this.ctx, 0.1),
-            emnolga: new Pair('./src/pokemonImages/emolga.png', this.canvas, this.ctx, 0.2),
-            bulbasaur: new Pair('./src/pokemonImages/bulbasaur.png', this.canvas, this.ctx, 0.3),
-            ivysaur: new Pair('./src/pokemonImages/ivysaur.png', this.canvas, this.ctx, 0.3),
-            venusaur: new Pair('./src/pokemonImages/venusaur.png', this.canvas, this.ctx, 0.3),
-            charmander: new Pair('./src/pokemonImages/charmander.png', this.canvas, this.ctx, 0.3),
-            charmeleon: new Pair('./src/pokemonImages/charmeleon.png', this.canvas, this.ctx, 0.3),
-            charizard: new Pair('./src/pokemonImages/charizard.png', this.canvas, this.ctx, 0.3),
-            squritle: new Pair('./src/pokemonImages/squirtle.png', this.canvas, this.ctx, 0.3),
-            wartortle: new Pair('./src/pokemonImages/wartortle.png', this.canvas, this.ctx, 0.3),
-            blastoise: new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
-        };
+        // const pairObj = {
+        //     pikachu: new Pair('./src/pokemonImages/pikachu.png', this.canvas, this.ctx, 0.1),
+        //     emnolga: new Pair('./src/pokemonImages/emolga.png', this.canvas, this.ctx, 0.2),
+        //     bulbasaur: new Pair('./src/pokemonImages/bulbasaur.png', this.canvas, this.ctx, 0.3),
+        //     ivysaur: new Pair('./src/pokemonImages/ivysaur.png', this.canvas, this.ctx, 0.3),
+        //     venusaur: new Pair('./src/pokemonImages/venusaur.png', this.canvas, this.ctx, 0.3),
+        //     charmander: new Pair('./src/pokemonImages/charmander.png', this.canvas, this.ctx, 0.3),
+        //     charmeleon: new Pair('./src/pokemonImages/charmeleon.png', this.canvas, this.ctx, 0.3),
+        //     charizard: new Pair('./src/pokemonImages/charizard.png', this.canvas, this.ctx, 0.3),
+        //     squritle: new Pair('./src/pokemonImages/squirtle.png', this.canvas, this.ctx, 0.3),
+        //     wartortle: new Pair('./src/pokemonImages/wartortle.png', this.canvas, this.ctx, 0.3),
+        //     blastoise: new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
+        // };
         
         for (let i = 0; i < 4; i++) { // pushes 4  
             const randomIndex = Math.floor(Math.random() * allPairs.length);

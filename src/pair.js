@@ -7,6 +7,7 @@ class Pair {
     }
 
     draw() {
+        // console.log(this.silhouette.isRevealed, 'draw.isRevealed');
         if (this.actual.isRevealed) {
             this.actual.draw();
         } else {
@@ -20,12 +21,14 @@ class Pair {
 
     reveal() {
         this.actual.reveal();
-        this.silhouette.isRevealed = true;
-        this.silhouette.isSilhouette = false;
+        this.silhouette.reveal();
+        // this.silhouette.isRevealed = true;
+        // this.silhouette.isSilhouette = false;
         // this.silhouette.isRevealed = false; // make sure the silhouette is not revealed after actual is revealed
         // this.stopAnimatingSilhouette(); // stop the silhouette from animating
         console.log('Pair class reveal: 321');
     }
+
 }
 
 export default Pair;
