@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log('You lose!');
                 } else {
                     game.revealPair(index);
-                    if (game.isGameOver()) {
+                    if (game.isGameWon()) {
                         console.log('You win!');
                     }
                 }

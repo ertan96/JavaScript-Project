@@ -26,17 +26,22 @@ class Game {
             new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
         ]
         
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) { // pushes 3 
             const randomIndex = Math.floor(Math.random() * allPairs.length);
             const selectedPair = allPairs.splice(randomIndex, 1)[0]; // Removes the selected pair from allPairs array
             this.pairs.push(selectedPair);
         }
 
+        const randomIndex = Math.floor(Math.random() * allPairs.length);
+        const selectedPair = allPairs.splice(randomIndex, 1)[0];
+        this.hiddenPairIndex = this.pairs.length - 1; // the hidden pair is the one displayed on the table
+        this.pairs.push(selectedPair);
+
         // this.pairs.push(pair1, pair2, pair3, pair4, pair5, pair6, pair7, pair8, pair9, pair10, pair11);
 
         // this.hiddenPairIndex = Math.floor(Math.random() * this.pairs.length);
 
-        // this.animate();
+        this.animate();
     }
 
     
@@ -60,7 +65,7 @@ class Game {
         console.log(`Pair revealed: ${this.pairs[index].actual.isRevealed}`);
     }
 
-    isGameOver() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
+    isGameWon() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
         const activePairs = this.pairs.filter((pair, index) => index !== this.hiddenPairIndex);  
         return activePairs.every(pair => pair.actual.isRevealed);
     }
