@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Player loses
                     console.log('You lose!');
                 } else {
-                    // debugger
                     game.revealPair(index);
                     if (game.isGameWon()) {
                         console.log('You win!');

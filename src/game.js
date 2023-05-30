@@ -60,7 +60,7 @@ class Game {
 
         this.pairs.forEach((pair, index) => {
             if (index !== this.hiddenPairIndex) {
-                // debugger
+
                 pair.draw();
             }
         });
