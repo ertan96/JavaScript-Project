@@ -52,13 +52,18 @@ class Pokemon extends MovingObject {
     }
 
     reveal() { // Reveal the actual image if this isn't a silhouette
-        if (!this.isSilhouette) {
-            this.isRevealed = true;
+        this.isRevealed = true;
+        
 
+        if (!this.isSilhouette) {
             this.animate().then(() => {
                 this.startAnimation();
             });
+        } else {
+            this.startAnimation();
         }
+        console.log(`Pokemon revealed: ${this.isRevealed}`);
+
     }
 
 

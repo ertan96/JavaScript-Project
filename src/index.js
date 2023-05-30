@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log('You lose!');
                 } else {
                     game.revealPair(index);
+                    if (game.isGameOver()) {
+                        console.log('You win!');
+                    }
                 }
             }
         });

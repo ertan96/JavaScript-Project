@@ -5,7 +5,7 @@ class Game {
         this.canvas = document.getElementById('view-canvas');
         this.canvas.width = 500;
         this.canvas.height = 500;
-        this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
+        this.ctx = this.canvas.getContext("2d", { willReadFrequently: true }); //this is added due to console error to improve performance
         this.pokemons = [];
         this.pairs = [];
         
@@ -37,17 +37,13 @@ class Game {
     }
 
     revealPair(index) { //grabs the index of the pairs array and reveals it
-        this.pairs[index].actual.isRevealed = true;
-        this.pairs[index].silhouette.isRevealed = false;
+        console.log(`Revealing pair at index ${index}`);
+        this.pairs[index].actual.reveal();
     }
 
-    isGameOver() {  
-        return this.pairs.every(pair => pair.actual.isRevealed);
-    }
-
-    async revealPair(index) { //allow for asynchronous drawing of silhouette and actual image
-        await this.pairs[index].actual.reveal();
-        this.pairs[index].actual.startAnimation();
+    isGameOver() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
+        const activePairs = this.pairs.filter((pair, index) => index !== this.hiddenPairIndex);  
+        return activePairs.every(pair => pair.actual.isRevealed);
     }
 
 
