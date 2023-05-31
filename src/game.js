@@ -2,16 +2,31 @@ import Pair from './pair.js';
 
 class Game {
     constructor () {
+        this.playAgainButton = document.getElementById('play-again');
+        this.instructions = document.getElementById('instructions');
+        this.gameScreen = document.getElementById('game-screen');
+        this.gameOverScreen = document.getElementById('game-over');
         this.canvas = document.getElementById('view-canvas');
+        this.pointCount = document.getElementById('point-count');
         this.canvas.width = 500;
         this.canvas.height = 500;
         this.ctx = this.canvas.getContext("2d", { willReadFrequently: true }); //this is added due to console error to improve performance
         this.pokemons = [];
         this.pairs = [];
+        this.countdownVal = 20;
+        this.points = 0;
         
     }
 
     start () {
+        clearInterval(this.countdownInterval); //clears all previous countdowns
+        
+        // Hides the instructions and shows game screen
+        this.instructions.style.display = 'none';
+        this.gameScreen.style.display = 'block';
+        
+        this.pairs = [];
+
         const allPairs = [
             new Pair('./src/pokemonImages/pikachu.png', this.canvas, this.ctx, 0.1),
             new Pair('./src/pokemonImages/emolga.png', this.canvas, this.ctx, 0.2),
@@ -25,20 +40,6 @@ class Game {
             new Pair('./src/pokemonImages/wartortle.png', this.canvas, this.ctx, 0.3),
             new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
         ]
-
-        // const pairObj = {
-        //     pikachu: new Pair('./src/pokemonImages/pikachu.png', this.canvas, this.ctx, 0.1),
-        //     emnolga: new Pair('./src/pokemonImages/emolga.png', this.canvas, this.ctx, 0.2),
-        //     bulbasaur: new Pair('./src/pokemonImages/bulbasaur.png', this.canvas, this.ctx, 0.3),
-        //     ivysaur: new Pair('./src/pokemonImages/ivysaur.png', this.canvas, this.ctx, 0.3),
-        //     venusaur: new Pair('./src/pokemonImages/venusaur.png', this.canvas, this.ctx, 0.3),
-        //     charmander: new Pair('./src/pokemonImages/charmander.png', this.canvas, this.ctx, 0.3),
-        //     charmeleon: new Pair('./src/pokemonImages/charmeleon.png', this.canvas, this.ctx, 0.3),
-        //     charizard: new Pair('./src/pokemonImages/charizard.png', this.canvas, this.ctx, 0.3),
-        //     squritle: new Pair('./src/pokemonImages/squirtle.png', this.canvas, this.ctx, 0.3),
-        //     wartortle: new Pair('./src/pokemonImages/wartortle.png', this.canvas, this.ctx, 0.3),
-        //     blastoise: new Pair('./src/pokemonImages/blastoise.png', this.canvas, this.ctx, 0.3)
-        // };
         
         for (let i = 0; i < 4; i++) { // pushes 4  
             const randomIndex = Math.floor(Math.random() * allPairs.length);
@@ -50,6 +51,8 @@ class Game {
         window.pairs = this.pairs;
         
         this.animate();
+
+        this.startCountdown();
     }
 
     
@@ -69,17 +72,57 @@ class Game {
     }
 
     revealPair(index) { //grabs the index of the pairs array and reveals it
-        console.log(`Revealing pair at index ${index}`);
-        // this.pairs[index].actual.reveal();
         this.pairs[index].reveal();
-        console.log(`Pair revealed: ${this.pairs[index].actual.isRevealed}`);
+
+        if (this.isGameWon()) {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+            this.start(); // Start a new game
+        }
     }
 
     isGameWon() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
         const activePairs = this.pairs.filter((pair, index) => index !== this.hiddenPairIndex);  
-        return activePairs.every(pair => pair.actual.isRevealed);
+        const roundWon = activePairs.every(pair => pair.actual.isRevealed);
+
+        if (roundWon) {
+            this.points += 1; //increment points by 1
+            this.pointCount.innerText = `Points: ${this.points}`; //update points in html
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+        }
+
+        return roundWon;
     }
 
+    gameOver () {
+        clearInterval(this.countdownInterval) //clears the interval regardless if win/lose
+        this.gameScreen.style.display = 'none';
+        this.gameOverScreen.style.display = 'block';
+        this.playAgainButton.style.display = 'block';
+
+        if (this.isGameWon()) {
+            console.log('game.js Winner');
+        } else {
+            this.pointCount.innerText = `Points: ${this.points}`;
+            console.log('game.js Loser');
+        }
+
+    }
+
+    startCountdown() {
+        this.countdownVal = 20;
+        const countdownEle = document.getElementById('countdown');
+        countdownEle.innerText = this.countdownVal;
+        
+        this.countdownInterval = setInterval(() => {
+            this.countdownVal -= 1;
+            countdownEle.innerText = this.countdownVal;
+            
+            if (this.countdownVal <= 0) {
+                clearInterval(this.countdownInterval);
+                this.gameOver();
+            }
+        }, 1000); 
+    }
 
 }
 

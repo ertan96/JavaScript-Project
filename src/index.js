@@ -2,17 +2,29 @@ import Game from "./game.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log('Webpack testing works')
-
-    const startButton = document.getElementById('start-button');
     
+    const startButton = document.getElementById('start-button');
+    const playAgainButton = document.getElementById('play-again');
+
+    let game = new Game();
+
     startButton.addEventListener('click', () => {
         console.log("button is getting clicked");
-        const game = new Game();
+        game.start();
+        createTable(game);
+    });
+
+    playAgainButton.addEventListener('click', () => {
         game.start();
         createTable(game);
     });
 
     function createTable(game) {
+        const oldTable = document.querySelector('.container table');
+        if (oldTable) {
+            oldTable.remove();
+        }
+
         const container = document.querySelector('.container');
         const table = document.createElement('table');
         const numPairs = game.pairs.length;
@@ -40,11 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const index = parseInt(e.target.dataset.pokemon);
                 if (index === game.hiddenPairIndex) {
                     // Player loses
-                    console.log('You lose!');
+                    console.log('LOSER LOSER YOU SNOOZEZ');
+                    game.gameOver();
                 } else {
                     game.revealPair(index);
                     if (game.isGameWon()) {
-                        console.log('You win!');
+                        console.log('WINNER WINNER CHICKEN DINNER');
                     }
                 }
             }

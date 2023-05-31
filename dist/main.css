@@ -1,3 +1,6 @@
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/reset.css ***!
+  \*********************************************************************************************/
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -46,6 +49,61 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-*{box-sizing:border-box}body{background-color:#333;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin:0}#view-canvas{background:#fff;border-radius:5px}.container{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%}h1{font-size:40px;font-family:Cascadia Code,sans-serif}.pokemon{display:none}.pokemon-button{width:100px;height:100px;cursor:pointer;border:2px solid #fff;border-radius:10px;padding:1px}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+* {
+  box-sizing: border-box;
+}
 
-/*# sourceMappingURL=main.css.map*/
+/* set default html and body to the top */
+body {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#view-canvas {
+  background: white;
+  border-radius: 5px;
+}
+
+/* align container class to the middle */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+h1 {
+  font-size: 40px;
+  font-family: Cascadia Code, sans-serif;
+}
+
+.pokemon {
+  display: none;
+}
+
+.pokemon-button {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 1px;
+}
+
+.links-top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+}
