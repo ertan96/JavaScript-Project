@@ -46,6 +46,8 @@ class MovingObject {
         this.ctx.rotate(this.angle);
         this.ctx.drawImage(this.image, -this.width / 2, -this.height / 2, this.width, this.height);
         this.ctx.restore();
+    
+        // requestAnimationFrame(() => this.draw());
     }
 
     startAnimation() {
