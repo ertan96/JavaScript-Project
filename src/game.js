@@ -67,7 +67,6 @@ class Game {
                 pair.draw();
             }
         });
-    
         requestAnimationFrame(() => this.animate());
     }
 
@@ -114,6 +113,7 @@ class Game {
         countdownEle.innerText = this.countdownVal;
         
         this.countdownInterval = setInterval(() => {
+            console.log(this.pairs, 'pairs');
             this.countdownVal -= 1;
             countdownEle.innerText = this.countdownVal;
             
