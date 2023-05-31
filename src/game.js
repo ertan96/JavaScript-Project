@@ -1,4 +1,5 @@
 import Pair from './pair.js';
+import { createTable } from './index.js';
 
 class Game {
     constructor () {
@@ -15,6 +16,7 @@ class Game {
         this.pairs = [];
         this.countdownVal = 20;
         this.points = 0;
+        this.updateTable = this.updateTable.bind(this);
         
     }
 
@@ -51,7 +53,7 @@ class Game {
         window.pairs = this.pairs;
         
         this.animate();
-
+        this.updateTable();
         this.startCountdown();
     }
 
@@ -77,6 +79,7 @@ class Game {
         if (this.isGameWon()) {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
             this.start(); // Start a new game
+            this.updateTable();
         }
     }
 
@@ -88,6 +91,7 @@ class Game {
             this.points += 1; //increment points by 1
             this.pointCount.innerText = `Points: ${this.points}`; //update points in html
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+            this.updateTable();
         }
 
         return roundWon;
@@ -122,6 +126,10 @@ class Game {
                 this.gameOver();
             }
         }, 1000); 
+    }
+
+    updateTable() {
+        createTable(this);
     }
 
 }

@@ -3,11 +3,10 @@ import Pokemon from './pokemon.js';
 class Pair {
     constructor(imagePath, canvas, ctx, scale) {
         this.silhouette = new Pokemon(imagePath, canvas, ctx, scale, true);
-        this.actual = new Pokemon(imagePath, canvas, ctx, scale, true);
+        this.actual = new Pokemon(imagePath, canvas, ctx, scale, false);
     }
 
     draw() {
-        // console.log(this.silhouette.isRevealed, 'draw.isRevealed');
         if (this.actual.isRevealed) {
             this.actual.draw();
         } else {
@@ -21,7 +20,7 @@ class Pair {
 
     reveal() {
         this.actual.reveal();
-        this.silhouette.reveal();
+        // this.silhouette.reveal();
         // this.silhouette.isRevealed = true;
         // this.silhouette.isSilhouette = false;
         // this.silhouette.isRevealed = false; // make sure the silhouette is not revealed after actual is revealed
