@@ -78,8 +78,10 @@ class Game {
 
         if (this.isGameWon()) {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
-            this.start(); // Start a new game
-            this.updateTable();
+            setTimeout(() => {
+                this.start(); // Start a new game
+                this.updateTable();
+            }, 1000);
         }
     }
 
@@ -92,6 +94,8 @@ class Game {
             this.pointCount.innerText = `Points: ${this.points}`; //update points in html
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
             this.updateTable();
+
+    
         }
 
         return roundWon;
