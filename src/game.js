@@ -24,7 +24,6 @@ class Game {
         clearInterval(this.countdownInterval); //clears all previous countdowns
         
         // Hides the instructions and shows game screen
-        this.instructions.style.display = 'none';
         this.gameScreen.style.display = 'block';
         
         this.pairs = [];
@@ -55,9 +54,10 @@ class Game {
         this.animate();
         this.updateTable();
         this.startCountdown();
-    }
 
-    
+        this.pointCount.innerText = `Points: ${this.points}`; //update points 
+
+    }
 
     animate() { //function allows multiple images on the canvas
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -76,27 +76,22 @@ class Game {
     revealPair(index) { //grabs the index of the pairs array and reveals it
         this.pairs[index].reveal();
 
-        if (this.isGameWon()) {
+        if (this.isRoundWon() && this.points <= 4) {
+            this.points += 1;
+            this.pointCount.innerText = `Points: ${this.points}`; //update points in html
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
-            setTimeout(() => {
-                this.start(); // Start a new game
-                this.updateTable();
-            }, 1000);
+            if (this.points <= 4) {
+                setTimeout(() => {
+                    this.start(); // Start a new game after every round
+                    this.updateTable();
+                }, 1000);
+            }
         }
     }
 
-    isGameWon() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
+    isRoundWon() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
         const activePairs = this.pairs.filter((pair, index) => index !== this.hiddenPairIndex);  
         const roundWon = activePairs.every(pair => pair.actual.isRevealed);
-
-        if (roundWon) {
-            this.points += 1; //increment points by 1
-            this.pointCount.innerText = `Points: ${this.points}`; //update points in html
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
-            this.updateTable();
-
-    
-        }
 
         return roundWon;
     }
@@ -104,20 +99,14 @@ class Game {
     gameOver () {
         clearInterval(this.countdownInterval) //clears the interval regardless if win/lose
         this.gameScreen.style.display = 'none';
-        this.gameOverScreen.style.display = 'block';
-        this.playAgainButton.style.display = 'block';
 
-        if (this.isGameWon()) {
-            console.log('game.js Winner');
-        } else {
+        if (!this.isRoundWon()) {
             this.pointCount.innerText = `Points: ${this.points}`;
-            console.log('game.js Loser');
         }
-
     }
 
     startCountdown() {
-        this.countdownVal = 20;
+        this.countdownVal = 10;
         const countdownEle = document.getElementById('countdown');
         countdownEle.innerText = this.countdownVal;
         

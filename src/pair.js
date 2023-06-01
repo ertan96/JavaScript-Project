@@ -14,18 +14,8 @@ class Pair {
         }
     }
 
-    // stopAnimatingSilhouette() {
-    //     this.silhouette.isRevealed = true; // stop the silhouette from animating
-    // }
-
     reveal() {
         this.actual.reveal();
-        // this.silhouette.reveal();
-        // this.silhouette.isRevealed = true;
-        // this.silhouette.isSilhouette = false;
-        // this.silhouette.isRevealed = false; // make sure the silhouette is not revealed after actual is revealed
-        // this.stopAnimatingSilhouette(); // stop the silhouette from animating
-        console.log('Pair class reveal: 321');
     }
 
 }

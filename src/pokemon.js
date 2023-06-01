@@ -63,19 +63,14 @@ class Pokemon extends MovingObject {
             this.ctx.drawImage(tempCanvas, -this.width / 2, -this.height / 2, this.width, this.height);
             this.ctx.restore();
         } else {
-            // If it's not a silhouette or it's revealed, just draw the image
-            super.draw();
+            super.draw(); // If it's not a silhouette or it's revealed, just draw the image
         }
     }
-    
-
 
     reveal() { // Reveal the actual image if this isn't a silhouette
-
         this.isRevealed = true;
         this.isSilhouette = false;
         this.draw();
-        // console.log(`Pokemon class.reveal: Pokemon revealed: ${this.isRevealed}`);
     }
 
 }

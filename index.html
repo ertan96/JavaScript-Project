@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
-    <title>Image Selector</title>
+    <title>Silhouett&#233;Mon: Guessing Game</title>
   </head>
-
+  
   <body>
-    <h1 class="game-title">Who's that Pok&#233;mon?</h1>
+    <dialog open class="modal" id="modal">
+      <div class="modal-content">
+        <h2 id="modal-title">SilhouetteMon: Guessing Game</h2>
+        <p id="modal-message">Instructions/GameOver/Victory</p>
+        <button id="start-button">Start Game!</button>
+      </div>
+    </dialog>
+    
+    <dialog class="modal" id="victory-modal">
+      <div class="modal-content">
+          <h2 id="victory-modal-title">Victory!</h2>
+          <p id="victory-modal-message">You've won!</p>
 
+          <div>
+            <p id="point-count">Points: 5</p>
+          </div>
+
+          <button id="v-play-again">Play Again!</button>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="gameover-modal">
+      <div class="modal-content">
+          <h2 id="gameover-modal-title">Game Over!</h2>
+          <p id="gameover-modal-message">Try again next time.</p>
+
+          <div>
+            <p id="point-count">Points: 0</p>
+          </div>
+
+          <button id="go-play-again">Play Again!</button>
+      </div>
+    </dialog>
+    
+    <h1 class="game-title">Silhouett&#233;Mon: Who's that Pok&#233;mon?</h1>
+    
     <div class="container" id="game-screen"> 
       <canvas id="view-canvas" width="600" height="600"></canvas>
     </div>
     
-    <div id="countdown">Timeleft: 20</div>
+    <div id="countdown">Time left: 10</div>
     
     <div class="links-top-right">
       
@@ -34,22 +67,8 @@
       </div>
       
     </div>
-      
-    <div id="instructions">
-      <h2>How to Play</h2>
-      <p>Instructions to play go here</p>
-      <button id="start-button">Start Game!</button>
-    </div>
     
-    <div>
-      <p id="point-count">Points: 0</p>
-    </div>
-
-    <div id="game-over" style="display: none;">
-      <h2>Game Over!</h2>
-      <button id="play-again">Play Again!</button>
-    </div>
-
+    <script src="./dist/main.js"></script>
   </body>
-
-</html>
+  
+  </html>

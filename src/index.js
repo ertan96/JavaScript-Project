@@ -1,22 +1,33 @@
 import Game from "./game.js"
+import { openVictoryModal, openGameOverModal, closeModal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('Webpack testing works')
-    
     const startButton = document.getElementById('start-button');
-    const playAgainButton = document.getElementById('play-again');
+    const victoryplayAgainButton = document.getElementById('v-play-again');
+    const gameOverplayAgainButton = document.getElementById('go-play-again');
 
     let game = new Game();
 
+
+
     startButton.addEventListener('click', () => {
-        console.log("button is getting clicked");
         game.start();
         createTable(game);
+        closeModal();
     });
 
-    playAgainButton.addEventListener('click', () => {
+    victoryplayAgainButton.addEventListener('click', () => {
+        game.points = 0;
         game.start();
         createTable(game);
+        closeModal();
+    });
+
+    gameOverplayAgainButton.addEventListener('click', () => {
+        game.points = 0;
+        game.start();
+        createTable(game);
+        closeModal();
     });
 
 });
@@ -49,18 +60,19 @@ function createTable(game) {
     }
     container.appendChild(table);
 
-    // Adds the event listener 'click' for the buttons
+    // Adds 'click' for the buttons
     table.addEventListener('click', (e) => {
         if (e.target.tagName === 'IMG') {
             const index = parseInt(e.target.dataset.pokemon);
             if (index === game.hiddenPairIndex) {
                 // Player loses
-                console.log('LOSER LOSER YOU SNOOZEZ');
                 game.gameOver();
+                openGameOverModal('Game Over!', 'You did not match all the correct SilhouetteMons in time. Better luck next time!')
             } else {
                 game.revealPair(index);
-                if (game.isGameWon()) {
-                    console.log('WINNER WINNER CHICKEN DINNER');
+                if (game.points === 5) {
+                    game.gameOver();
+                    openVictoryModal('Victory!', 'You win congrats');
                 }
             }
         }
