@@ -5,6 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById('start-button');
     const victoryplayAgainButton = document.getElementById('v-play-again');
     const gameOverplayAgainButton = document.getElementById('go-play-again');
+    const pokeMusic = document.getElementById('poke-music');
+    const musicToggle = document.getElementById('music-toggle');
+
+    musicToggle.addEventListener('click', () => {
+        if (pokeMusic.paused) {
+          pokeMusic.play();
+        } else {
+          pokeMusic.pause(); // Pause the music
+        }
+      });
 
     let game = new Game();
 
