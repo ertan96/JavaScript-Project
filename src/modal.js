@@ -21,7 +21,7 @@ function openVictoryModal(title, message) {
 function openGameOverModal(title, message) {
     gameOverModalTitle.textContent = title;
     gameOverModalMessage.textContent = message;
-    
+
     gameOverModal.style.display = "block";
 
 }
@@ -42,8 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
     gameOverModal = document.getElementById('gameover-modal');
     gameOverModalTitle = document.getElementById('gameover-modal-title');
     gameOverModalMessage = document.getElementById('gameover-modal-message');
-    
-    openModal('SilhouetteMon: Guessing Game', 'Welcome to the silhouette matching game! Your goal is to correctly identify the three bouncing silhouettes out of four choices. Pay attention to their movements and match them with the correct options on the screen. Be careful, as selecting the wrong answer or running out of time will cost you the game. Score one point for round won, and strive to reach five points to win! Good luck!')
+    const etext = 'Pok\u00E9Gu\u00E9ss';
+
+    openModal(`${etext}: Guessing Game`, 'PokeGuess, the ultimate guessing game where your challenge is to identify three bouncing silhouettes from four options. Be mindful of their movements, time, and wrong choices, and aim to score five points by winning each round - Good luck!')
 
 
     window.onclick = function(event) {

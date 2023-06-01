@@ -68,7 +68,7 @@ function createTable(game) {
                 // Player loses
                 game.gameOver();
                 //add current points to gameOverModal
-                openGameOverModal('Game Over!', `You did not match all the correct SilhouetteMons in time. Better luck next time! Your final score is ${game.points}!`)
+                openGameOverModal('Game Over!', `You did not match all the correct Pokemon Silhouettes in time. Better luck next time! Your final score is ${game.points}!`)
             } else {
                 game.revealPair(index);
                 if (game.points === 5) {

@@ -1,5 +1,7 @@
 import Pair from './pair.js';
 import { createTable } from './index.js';
+import { openGameOverModal } from "./modal.js";
+
 
 class Game {
     constructor () {
@@ -9,8 +11,8 @@ class Game {
         this.gameOverScreen = document.getElementById('game-over');
         this.canvas = document.getElementById('view-canvas');
         this.pointCount = document.getElementsByClassName('point-count');
-        this.canvas.width = 500;
-        this.canvas.height = 500;
+        this.canvas.width = 400;
+        this.canvas.height = 400;
         this.ctx = this.canvas.getContext("2d", { willReadFrequently: true }); //this is added due to console error to improve performance
         this.pokemons = [];
         this.pairs = [];
@@ -120,6 +122,10 @@ class Game {
                 this.pointCount[i].innerText = `Points: ${this.points}`;
             }
         }
+        if (this.countdownVal <= 0) {
+            openGameOverModal('Game Over!', `You did not match all the correct Pokemon Silhouettes within the time limit. Better luck next time! Your final score is ${this.points}!`)
+        }
+
     }
 
     startCountdown() {
