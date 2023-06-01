@@ -9,7 +9,7 @@ class Pokemon extends MovingObject {
         this.isRevealed = false;
     }
 
-    applySilhouette(imageData) { //function was pulled from a script online for silhouette on canvas
+    applySilhouette(imageData) { //applying silhouette with pixel manipulation provided by fcalderan: https://gist.github.com/fcalderan/951273/69b722f2fcb782ed2d2d5c4a887dcaf7903296f0#file-silhouette-canvas
         const data = imageData.data;
     
         for (let i = 0; i < data.length; i += 4) {
@@ -25,16 +25,6 @@ class Pokemon extends MovingObject {
     }
 
     draw() { 
-        // super.draw();
-
-        // if (this.isSilhouette && !this.isRevealed) { // applies silhouette if instance is a silhouette but not revealed
-        //     const tempCanvas = document.createElement('canvas');
-        //     const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-        //     const silhouetteData = this.applySilhouette(imageData);
-        //     this.ctx.putImageData(silhouetteData, 0, 0);
-        // }
-
-
         // Always move the Pokemon regardless of its state
         this.move();
 

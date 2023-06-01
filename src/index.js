@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let game = new Game();
 
-
-
     startButton.addEventListener('click', () => {
         game.start();
         createTable(game);
@@ -41,23 +39,20 @@ function createTable(game) {
 
     const container = document.querySelector('.container');
     const table = document.createElement('table');
+    const row = document.createElement('tr');
     const numPairs = game.pairs.length;
-    for (let i = 0; i < 2; i++) {
-        const row = document.createElement('tr');
-        for (let j = 0; j < 2; j++) {
-            const cell = document.createElement('td');
-            const imgButton = document.createElement('img');
-            const index = i*2 + j;
-            if (index < numPairs) {
-                imgButton.src = game.pairs[index].actual.imagePath; // set the image source to the actual Pokemon image
-                imgButton.dataset.pokemon = index; // Assign the index to the button
-                imgButton.classList.add('pokemon-button'); // Add a class for styling
-            }
-            cell.appendChild(imgButton);
-            row.appendChild(cell);
-        }
-        table.appendChild(row);
+    for (let i = 0; i < numPairs; i++) {
+        const cell = document.createElement('td');
+        const imgButton = document.createElement('img');
+
+        imgButton.src = game.pairs[i].actual.imagePath; // set the image source to the actual Pokemon image
+        imgButton.dataset.pokemon = i; // Assign the index to the button
+        imgButton.classList.add('pokemon-button'); // Add a class for styling
+        cell.appendChild(imgButton);
+        row.appendChild(cell);
     }
+    
+    table.appendChild(row);
     container.appendChild(table);
 
     // Adds 'click' for the buttons

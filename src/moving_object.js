@@ -38,7 +38,6 @@ class MovingObject {
     }
 
     draw() {
-        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  // clears canvas constantly everytime drawn
         this.move();
 
         this.ctx.save();
@@ -48,9 +47,6 @@ class MovingObject {
         this.ctx.restore();
     }
 
-    // startAnimation() {
-    //     this.draw();
-    // }
 }
 
 export default MovingObject;

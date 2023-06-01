@@ -21,14 +21,20 @@ body {
 #view-canvas {
     background: white;
     border-radius: 5px;
+    flex: 1;
 }
 
 .container {   
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.container table {
+    width: 300px;
+    margin-right: 10px; 
 }
 
 h1 {
@@ -219,3 +225,14 @@ h1 {
     cursor: pointer;
 }
 
+.game-title {
+    font-family: 'Pokemon Solid', sans-serif;
+    color: yellow;
+    text-shadow:
+    0 0 blue,
+    -3px -3px blue,
+    3px -3px blue,
+    -3px 3px blue,
+    3px 3px blue;
+    padding-bottom: 2%;
+}
