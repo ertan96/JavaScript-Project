@@ -50,6 +50,7 @@ h1 {
 }
 
 .links-top-right {
+    z-index: 9999;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -96,6 +97,17 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+.center-circle2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px; 
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%); 
+}
+
 .red-ball {
     height: 50%;
     width: 100%;
@@ -124,8 +136,16 @@ h1 {
 }
 
 #modal-title {
+    font-family: 'Pokemon Solid', sans-serif;
     z-index: 10;
     border-radius: 5px;
+    color: yellow;
+    text-shadow: //shadow applied to font in all 4 directions
+    0 0 blue,
+    -3px -3px blue,
+    3px -3px blue,
+    -3px 3px blue,
+    3px 3px blue;
 }
 
 #modal-message {
@@ -144,13 +164,29 @@ h1 {
 }
 
 #victory-modal-title {
+    font-family: 'Pokemon Solid', sans-serif;
     z-index: 10;
     border-radius: 5px;
+    color: yellow;
+    text-shadow:
+    0 0 blue,
+    -3px -3px blue,
+    3px -3px blue,
+    -3px 3px blue,
+    3px 3px blue;
 }
 
 #gameover-modal-title {
+    font-family: 'Pokemon Solid', sans-serif;
     z-index: 10;
     border-radius: 5px;
+    color: yellow;
+    text-shadow:
+    0 0 blue,
+    -3px -3px blue,
+    3px -3px blue,
+    -3px 3px blue,
+    3px 3px blue;
 }
 
 #victory-modal-message {
