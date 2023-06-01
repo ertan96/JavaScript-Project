@@ -8,7 +8,7 @@ class Game {
         this.gameScreen = document.getElementById('game-screen');
         this.gameOverScreen = document.getElementById('game-over');
         this.canvas = document.getElementById('view-canvas');
-        this.pointCount = document.getElementById('point-count');
+        this.pointCount = document.getElementsByClassName('point-count');
         this.canvas.width = 500;
         this.canvas.height = 500;
         this.ctx = this.canvas.getContext("2d", { willReadFrequently: true }); //this is added due to console error to improve performance
@@ -25,6 +25,9 @@ class Game {
         
         // Hides the instructions and shows game screen
         this.gameScreen.style.display = 'block';
+        //shows the countdown button again
+        document.getElementById('countdown').style.display = 'block';
+
         
         this.pairs = [];
 
@@ -55,7 +58,7 @@ class Game {
         this.updateTable();
         this.startCountdown();
 
-        this.pointCount.innerText = `Points: ${this.points}`; //update points 
+        this.pointCount.innerText = `Your score: ${this.points}`; //update points 
 
     }
 
@@ -78,7 +81,11 @@ class Game {
 
         if (this.isRoundWon() && this.points <= 4) {
             this.points += 1;
-            this.pointCount.innerText = `Points: ${this.points}`; //update points in html
+
+            for (let i = 0; i < this.pointCount.length; i++) {
+                this.pointCount[i].innerText = `Points: ${this.points}`;
+            } 
+
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
             if (this.points <= 4) {
                 setTimeout(() => {
@@ -87,6 +94,13 @@ class Game {
                 }, 1000);
             }
         }
+
+        if (!this.isRoundWon()) {
+            for (let i = 0; i < this.pointCount.length; i++) {
+                this.pointCount[i].innerText = `Points: ${this.points}`;
+            }
+          }
+
     }
 
     isRoundWon() {  //changed this so the array does not have all silhouettes in the array to trigger true/false but only for silhouettes floating on canvas
@@ -99,9 +113,12 @@ class Game {
     gameOver () {
         clearInterval(this.countdownInterval) //clears the interval regardless if win/lose
         this.gameScreen.style.display = 'none';
-
+        document.getElementById('countdown').style.display = 'none';
+      
         if (!this.isRoundWon()) {
-            this.pointCount.innerText = `Points: ${this.points}`;
+            for (let i = 0; i < this.pointCount.length; i++) {
+                this.pointCount[i].innerText = `Points: ${this.points}`;
+            }
         }
     }
 

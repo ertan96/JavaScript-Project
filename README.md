@@ -1,7 +1,7 @@
-# SilhouetteMon: Guessing Game
+# PokeSilhouette: Guessing Game
 
 # Background
-SilhouetteMon is a simple game where a user will be given a multiple choice of images to select. There will be the same amount of silhouette of those images on a canvas floating around; minus one image. These silhouettes overlap each other to make it more difficult for the player to identify what images are on the canvas.
+PokeSilhouette is a simple game where a user will be given a multiple choice of images to select. There will be the same amount of silhouette of those images on a canvas floating around; minus one image. These silhouettes overlap each other to make it more difficult for the player to identify what images are on the canvas.
 
 The Rules are simple:
 - The player must select all the correct images to complete a round.

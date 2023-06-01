@@ -67,12 +67,13 @@ function createTable(game) {
             if (index === game.hiddenPairIndex) {
                 // Player loses
                 game.gameOver();
-                openGameOverModal('Game Over!', 'You did not match all the correct SilhouetteMons in time. Better luck next time!')
+                //add current points to gameOverModal
+                openGameOverModal('Game Over!', `You did not match all the correct SilhouetteMons in time. Better luck next time! Your final score is ${game.points}!`)
             } else {
                 game.revealPair(index);
                 if (game.points === 5) {
                     game.gameOver();
-                    openVictoryModal('Victory!', 'You win congrats');
+                    openVictoryModal('Victory!', 'You successfully beat the game!');
                 }
             }
         }

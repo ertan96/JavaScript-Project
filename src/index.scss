@@ -7,6 +7,9 @@
 /* set default html and body to the top */
 body {
     background-color: #333;
+    background-image: url('../src/cssbackground/background1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #fff;
     display: flex;
     flex-direction: column;
