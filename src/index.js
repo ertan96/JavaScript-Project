@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 function createTable(game) {
     const oldTable = document.querySelector('.container table');
     if (oldTable) {
@@ -51,7 +50,7 @@ function createTable(game) {
         cell.appendChild(imgButton);
         row.appendChild(cell);
     }
-    
+
     table.appendChild(row);
     container.appendChild(table);
 
@@ -63,12 +62,12 @@ function createTable(game) {
                 // Player loses
                 game.gameOver();
                 //add current points to gameOverModal
-                openGameOverModal('Game Over!', `You did not match all the correct Pokemon Silhouettes in time. Better luck next time! Your final score is ${game.points}!`)
+                openGameOverModal('Game Over!', `Better luck next time! Your final score is ${game.points}!`)
             } else {
                 game.revealPair(index);
                 if (game.points === 5) {
                     game.gameOver();
-                    openVictoryModal('Victory!', 'You successfully beat the game!');
+                    openVictoryModal('Victory!', 'You win!');
                 }
             }
         }

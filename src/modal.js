@@ -42,9 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     gameOverModal = document.getElementById('gameover-modal');
     gameOverModalTitle = document.getElementById('gameover-modal-title');
     gameOverModalMessage = document.getElementById('gameover-modal-message');
-    const etext = 'Pok\u00E9Gu\u00E9ss';
 
-    openModal(`${etext}: Guessing Game`, 'PokeGuess, the ultimate guessing game where your challenge is to identify three bouncing silhouettes from four options. Be mindful of their movements, time, and wrong choices, and aim to score five points by winning each round - Good luck!')
+    openModal('Pok\u00E9Gu\u00E9ss: Instructions', 'Pok\u00E9Gu\u00E9ss, the ultimate guessing game where you need to match the Pokemon with the shadow! Reach 5 points to win!')
 
 
     window.onclick = function(event) {

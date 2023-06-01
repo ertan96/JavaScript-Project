@@ -25,7 +25,6 @@ class Pokemon extends MovingObject {
     }
 
     draw() { 
-        // Always move the Pokemon regardless of its state
         this.move();
 
         // If it's a silhouette and not revealed, apply silhouette effect

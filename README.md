@@ -13,7 +13,7 @@ If time persist, there will be several levels of difficulty a player can select 
 # Functionality & MVPs
 In Silhouette, users will be able to:
 
-- Start the game on to have silhoettes floating on the canvas
+- Start the game to have silhoettes floating on the canvas
 - Select from a limited amount of options/buttons to select the correct silhouette
 - Pause button to pause/unpause the background music at anytime
 - Overlapping silhouettes of objects floating around the canvas

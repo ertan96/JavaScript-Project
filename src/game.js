@@ -18,18 +18,13 @@ class Game {
         this.pairs = [];
         this.countdownVal = 20;
         this.points = 0;
-        this.updateTable = this.updateTable.bind(this);
-        
+        this.updateTable = this.updateTable.bind(this); 
     }
 
     start () {
         clearInterval(this.countdownInterval); //clears all previous countdowns
         
-        // Hides the instructions and shows game screen
-        this.gameScreen.style.display = 'block';
-        //shows the countdown button again
-        document.getElementById('countdown').style.display = 'block';
-
+        this.gameScreen.style.display = 'block'; // Hides the instructions and shows game screen
         
         this.pairs = [];
 
@@ -74,7 +69,13 @@ class Game {
                 pair.draw();
             }
         });
-    
+
+        //Put total points and countdown onto canvas
+        this.ctx.font = '14px sans-serif';
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText(`Time left: ${this.countdownVal}`, 150, 15);
+        this.ctx.fillText(`Points: ${this.points}`, 0, 15);
+
         requestAnimationFrame(() => this.animate());
     }
 
@@ -93,7 +94,7 @@ class Game {
                 setTimeout(() => {
                     this.start(); // Start a new game after every round
                     this.updateTable();
-                }, 1000);
+                }, 700);
             }
         }
 
@@ -115,7 +116,6 @@ class Game {
     gameOver () {
         clearInterval(this.countdownInterval) //clears the interval regardless if win/lose
         this.gameScreen.style.display = 'none';
-        document.getElementById('countdown').style.display = 'none';
       
         if (!this.isRoundWon()) {
             for (let i = 0; i < this.pointCount.length; i++) {
@@ -123,7 +123,7 @@ class Game {
             }
         }
         if (this.countdownVal <= 0) {
-            openGameOverModal('Game Over!', `You did not match all the correct Pokemon Silhouettes within the time limit. Better luck next time! Your final score is ${this.points}!`)
+            openGameOverModal('Game Over!', `You did not match all the correct Pokemon shadows within the time limit. Better luck next time! Your final score is ${this.points}!`)
         }
 
     }
