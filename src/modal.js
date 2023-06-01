@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameOverModalTitle = document.getElementById('gameover-modal-title');
     gameOverModalMessage = document.getElementById('gameover-modal-message');
 
-    openModal('Pok\u00E9Gu\u00E9ss: Instructions', 'Pok\u00E9Gu\u00E9ss, the ultimate guessing game where you need to match the Pokemon with the shadow! Reach 5 points to win!')
+    openModal('Pok\u00E9Gu\u00E9ss: Instructions', 'Pok\u00E9Gu\u00E9ss, the ultimate guessing game where you need to match the Pokemon with the shadow within 10 seconds. Reach 5 points to win!')
 
 
     window.onclick = function(event) {
